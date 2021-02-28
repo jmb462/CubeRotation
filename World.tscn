@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://World.gd" type="Script" id=2]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 1, 1, 1 )
+
+[node name="World" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.683013, -0.258819, 0.683013, -0.00623602, 0.933013, 0.359789, -0.73038, -0.25, 0.635646, 4, 2, 4 )
+current = true
+
+[node name="Cube" type="Spatial" parent="."]
+
+[node name="Mesh" type="MeshInstance" parent="Cube"]
+mesh = SubResource( 1 )
+material/0 = null
