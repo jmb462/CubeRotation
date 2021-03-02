@@ -7,28 +7,15 @@ onready var tween = $Tween
 onready var cube : Spatial = $Cube
 onready var mesh : MeshInstance = $Cube/Mesh
 
-enum DIRECTION { LEFT, RIGHT, UP, DOWN }
-
 func _process(_delta : float) -> void:
 	if not tween.is_active():
 		if Input.is_action_pressed("ui_left"):
-			setup_rotation(DIRECTION.LEFT);
-		elif Input.is_action_pressed("ui_right"):
-			setup_rotation(DIRECTION.RIGHT);
-		elif Input.is_action_pressed("ui_up"):
-			setup_rotation(DIRECTION.UP);
-		elif Input.is_action_pressed("ui_down"):
-			setup_rotation(DIRECTION.DOWN);
-
-func setup_rotation(dir : int) -> void:
-	match dir:
-		DIRECTION.LEFT :
 			start_rotation(Vector3(0.0,0,1.0), "translation:x", cube.translation.x-1)
-		DIRECTION.RIGHT :
+		elif Input.is_action_pressed("ui_right"):
 			start_rotation(Vector3(0.0,0,-1.0), "translation:x", cube.translation.x+1)
-		DIRECTION.UP:
+		elif Input.is_action_pressed("ui_up"):
 			start_rotation(Vector3(-1.0,0,0.0), "translation:z", cube.translation.z-1)
-		DIRECTION.DOWN:
+		elif Input.is_action_pressed("ui_down"):
 			start_rotation(Vector3(1.0,0,0.0), "translation:z", cube.translation.z+1)
 
 func start_rotation(axis : Vector3, target_translation : String, dest_translation : float, duration : float = 0.5):
